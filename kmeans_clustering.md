@@ -1,70 +1,60 @@
+# K-Means Clustering – Summary
 
-# K-Means Clustering Summary
+## 📌 What is K-Means?
 
-## What is K-Means?
+K-Means is an **iterative, centroid-based clustering algorithm** used to partition a dataset into *k* distinct, non-overlapping clusters based on feature similarity.
 
-K-Means is an **iterative**, **centroid-based** clustering algorithm that partitions a dataset into _k_ non-overlapping groups or clusters, based on the distance between data points and cluster centroids.
-
-- It is a **partition-based** unsupervised learning algorithm.
-- It works best when clusters are **convex**, **similar in size**, and **well-separated**.
-- It is **efficient** and **scales well** to large datasets.
+- It minimizes the **within-cluster variance**.
+- It assumes clusters are **convex**, **balanced in size**, and **spherical** in shape.
 
 ---
 
-## How the K-Means Algorithm Works
+## ⚙️ How K-Means Works
 
-### 1. Initialization
-Choose the number of clusters, **K**, and randomly initialize **K centroids**.
-
-### 2. Assignment
-Assign each data point to the **nearest centroid** based on a distance metric (usually Euclidean).
-
-### 3. Update
-Update the centroid of each cluster as the **mean of all points** assigned to it.
-
-### 4. Repeat
-Repeat assignment and update steps until convergence:
-- Centroids no longer move
-- Or maximum iterations reached
+1. **Initialization**: Choose the number of clusters \( k \) and randomly select initial centroids.
+2. **Assignment Step**: Assign each data point to the nearest centroid using a distance metric (e.g., Euclidean).
+3. **Update Step**: Recalculate centroids as the mean of the points in each cluster.
+4. **Repeat** until centroids stabilize (convergence) or a maximum number of iterations is reached.
 
 ---
 
-## Objective Function
+## 🎯 Objective Function
 
 The goal of K-Means is to **minimize within-cluster variance**, defined as:
 
-$$
-\sum_{i=1}^{K} \sum_{x \in C_i} \|x - \mu_i\|^2
-$$
+\[
+\sum_{i=1}^{K} \sum_{x \in C_i} \| x - \mu_i \|^2
+\]
 
 Where:
-- \( C_i \): Cluster i
-- \( \mu_i \): Centroid of cluster i
+- \( C_i \): Cluster \( i \)
+- \( \mu_i \): Centroid of cluster \( i \)
 - \( x \): A data point in cluster \( C_i \)
 
 ---
 
-## Limitations of K-Means
+## 🧪 Behavior in Experiments
 
-- **Performs poorly on imbalanced clusters**
-- **Assumes convex clusters**
-- **Sensitive to outliers and noise**
-- **Needs K to be specified beforehand**
-
----
-
-## Determining the Optimal K
-
-Choosing K is a challenge. Several techniques help determine a good value for K:
-
-1. **Silhouette Score** – Measures cohesion vs separation.
-2. **Elbow Method** – Plots within-cluster sum of squares vs K.
-3. **Davies-Bouldin Index** – Measures cluster similarity.
+- Performs well with **well-separated clusters** of similar density and size.
+- Performs poorly with:
+  - **Imbalanced cluster sizes**
+  - **Non-convex clusters**
+  - **Outliers or noisy data**
 
 ---
 
-## Summary
+## ❓ Choosing Optimal K
 
-- K-Means partitions data into K groups with minimal intra-cluster distance.
-- It is efficient but sensitive to initialization and scale.
-- Finding optimal K and preprocessing (e.g., feature scaling) are critical for good performance.
+Techniques for estimating the best number of clusters:
+- **Elbow Method**: Find the point where the within-cluster variance curve starts to flatten.
+- **Silhouette Analysis**: Measure how similar a point is to its own cluster vs. other clusters.
+- **Davies-Bouldin Index**: Lower values indicate better clustering.
+
+---
+
+## 📌 Summary
+
+- K-Means is efficient and scalable.
+- It’s sensitive to initialization and outliers.
+- The number of clusters \( k \) must be pre-defined.
+- Useful for applications like customer segmentation, image compression, and pattern discovery.
